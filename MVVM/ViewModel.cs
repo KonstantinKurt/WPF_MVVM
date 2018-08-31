@@ -36,7 +36,7 @@ namespace MVVM
             }
         }
         ICommand get_text; // Создаю поле команды для кнопки "ОК";
-        ICommand clear_text;
+        ICommand clear_text;// Cancel;
         public ICommand Get_text
         {
             get
