@@ -1,0 +1,49 @@
+﻿<!--
+    Перед тем, как начать писать код, подключим пакет NuGet MVVMLightLibs (поиск по тегу Gala), содержащий
+    необходимые библиотеки для работы с паттерном Model-View-ViewModel
+-->
+<Window
+    x:Class="MVVM.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Developer="clr-namespace:MVVM"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MVVM"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <!--  Developer - пространство имен созданное разработчиком, в данном случае аналог стандартного local  -->
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+    <!--  DataContext привязывает к данному окну класс ViewModel через строку созданную разработчиком  -->
+    <Grid>
+        <TextBox
+            Width="225"
+            Height="23"
+            Margin="52,35,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="{Binding Text}"
+            TextWrapping="Wrap" />
+        <!--  Binding -привязка(в данном случае к свойству Text из класса ViewModel  -->
+        <Button
+            Command="{Binding Get_text}"
+            Width="75"
+            Margin="52,90,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="OK" />
+        <Button
+            Command="{Binding Clear_text}"
+            Width="75"
+            Margin="202,90,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Clear"
+            RenderTransformOrigin="-0.13,0.464" />
+
+    </Grid>
+</Window>
