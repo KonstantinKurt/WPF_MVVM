@@ -18,8 +18,18 @@
     <Window.DataContext>
         <local:ViewModel />
     </Window.DataContext>
-    <!--  DataContext привязывает к данному окну класс ViewModel через строку созданную разработчиком  -->
-    <Grid>
+    <!--  DataContext привязывает к данному окну класс ViewModel через пространство имен  -->
+    <Grid Margin="0,0,2,0">
+        <Line
+            Margin="0,10,0,-10"
+            Stroke="Red"
+            StrokeThickness="3"
+            X1="0"
+            X2="800"
+            Y1="120"
+            Y2="120" />
+        <!--  Прорисовка линии по координатам с применением свойств цвета и толщины  -->
+        <!--  Любой элемент на окне можно двигать своими кацарупалками и его координаты автоматически изменятся  -->
         <TextBox
             Width="225"
             Height="23"
@@ -27,23 +37,60 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text="{Binding Text}"
+            TextAlignment="Center"
             TextWrapping="Wrap" />
         <!--  Binding -привязка(в данном случае к свойству Text из класса ViewModel  -->
         <Button
-            Command="{Binding Get_text}"
             Width="75"
             Margin="52,90,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            Command="{Binding Get_text}"
             Content="OK" />
         <Button
-            Command="{Binding Clear_text}"
             Width="75"
             Margin="202,90,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            Command="{Binding Clear_text}"
             Content="Clear"
             RenderTransformOrigin="-0.13,0.464" />
+        <ListView
+            Name="Listview1"
+            Width="225"
+            Height="200"
+            Margin="52,150,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding Books}"
+            RenderTransformOrigin="-0.493,0.148"
+            SelectedIndex="{Binding Get_Selected}"
+            SelectedItem="">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Pages}" Header="Pages" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--  Данный ListView будет содержать коллекцию элементов класса Books (строка 64)  -->
+        <!--  Колонки разбиты на поля этого класса и индекс выбранного элемента привязан к свойству Get_Selected класса ViewModel  -->
+        <Button
+            Width="75"
+            Margin="299,151,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Command="{Binding Add_new}"
+            Content="Add"
+            RenderTransformOrigin="0.358,0.971" />
+        <Button
+            Width="75"
+            Margin="299,195,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Command="{Binding Сhange_pages}"
+            Content="Change pages"
+            RenderTransformOrigin="-0.389,0.15" />
 
     </Grid>
 </Window>
