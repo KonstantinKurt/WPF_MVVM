@@ -84,13 +84,30 @@
             Content="Add"
             RenderTransformOrigin="0.358,0.971" />
         <Button
-            Width="75"
+            Width="97"
             Margin="299,195,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Command="{Binding Сhange_pages}"
             Content="Change pages"
-            RenderTransformOrigin="-0.389,0.15" />
+            IsEnabled="{Binding ElementName=CheckBox1, Path=IsChecked}"
+            RenderTransformOrigin="-0.389,0.15">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.343" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <!--  Кнопка активна, если CheckBox в состоянии True  -->
+        <CheckBox
+            x:Name="CheckBox1"
+            Margin="425,197,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Edit" />
 
     </Grid>
 </Window>
